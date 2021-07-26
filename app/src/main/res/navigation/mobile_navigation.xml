@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.acompworld.teamconnect.ui.fragments.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_directory"
+        android:name="com.acompworld.teamconnect.ui.fragments.directory.DirectoryFragment"
+        android:label="Directory"
+        tools:layout="@layout/fragment_directory" >
+
+        <action
+            android:id="@+id/action_nav_directory_to_nav_emp_profile"
+            app:destination="@id/nav_emp_profile"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_right"/>
+        <action
+            android:id="@+id/action_nav_directory_to_nav_tele_directory"
+            app:destination="@id/nav_tele_directory" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_emp_profile"
+        android:name="com.acompworld.teamconnect.ui.fragments.directory.EmployeeProfile"
+        tools:layout="@layout/fragment_employees" />
+
+
+    <fragment
+        android:id="@+id/nav_tele_directory"
+        android:name="com.acompworld.teamconnect.ui.fragments.directory.TelePhoneContact"
+        tools:layout="@layout/fragment_telephone_contact" />
+</navigation>

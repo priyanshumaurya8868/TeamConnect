@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/mild_white"
+    tools:context=".ui.fragments.HomeFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_10ssp">
+
+            <ImageView
+                android:id="@+id/iv_logo"
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_30sdp"
+                android:src="@drawable/ic_national_thermal_power_logo" />
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/iv_logo"
+                android:fontFamily="@font/source_sans_pro_semibold"
+                android:paddingHorizontal="@dimen/_5sdp"
+                android:text="Team Connect"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16ssp" />
+
+            <TextView
+                android:id="@+id/project_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_name"
+                android:layout_marginHorizontal="@dimen/_8sdp"
+                android:layout_toEndOf="@id/iv_logo"
+                android:fontFamily="@font/source_sans_pro"
+                android:textColor="@color/mild_black"
+                android:textSize="@dimen/_10ssp"
+                tools:text="Western Region - 1 HQ" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/iv_logo"
+                tools:itemCount="1"
+                android:layout_marginTop="@dimen/_minus5sdp"
+                android:layout_marginStart="@dimen/_minus5sdp"
+                tools:listitem="@layout/home_rv_item1" />
+
+            <!--            TODO: Play with it-->
+            <RelativeLayout
+                android:id="@+id/container_gen_data1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rv_1"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/label_gen_data"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/source_sans_pro_semibold"
+                    android:text="Generation Data"
+                    android:textColor="@color/mild_black" />
+
+                <TextView
+                    android:id="@+id/action_more"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/label_gen_data"
+                    android:layout_alignParentEnd="true"
+                    android:fontFamily="@font/source_sans_pro_semibold"
+                    android:text="More"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/_10ssp" />
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/label_gen_data"
+                    android:layout_marginTop="@dimen/_minus10sdp"
+                    tools:itemCount="1"
+                    tools:listitem="@layout/rv_item_2" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/label_gen_data2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/container_gen_data1"
+                android:layout_alignParentStart="true"
+                android:fontFamily="@font/source_sans_pro_semibold"
+                android:text="Generation Data"
+                android:textColor="@color/mild_black" />
+
+
+            <nl.bryanderidder.themedtogglebuttongroup.ThemedToggleButtonGroup
+                android:id="@+id/toggle_btns_grp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/label_gen_data2"
+                android:layout_alignParentStart="true"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:paddingVertical="@dimen/_10sdp"
+                app:alignItems="flex_start"
+                app:flexWrap="wrap"
+                app:justifyContent="flex_start"
+                app:toggle_horizontalSpacing="@dimen/_5sdp">
+
+                <nl.bryanderidder.themedtogglebuttongroup.ThemedButton
+                    android:id="@+id/tag_all"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_25sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:elevation="@dimen/_20sdp"
+                    app:toggle_backgroundColor="@color/white"
+                    app:toggle_selectedBackgroundColor="@color/yellow"
+                    app:toggle_selectedTextColor="@color/white"
+                    app:toggle_text="All"
+                    app:toggle_textColor="@color/grey" />
+
+                <nl.bryanderidder.themedtogglebuttongroup.ThemedButton
+                    android:id="@+id/tag_circular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_24sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:elevation="@dimen/_20sdp"
+                    app:toggle_backgroundColor="@color/white"
+                    app:toggle_selectedBackgroundColor="@color/yellow"
+                    app:toggle_selectedTextColor="@color/white"
+                    app:toggle_text="Circular"
+                    app:toggle_textColor="@color/grey" />
+
+                <nl.bryanderidder.themedtogglebuttongroup.ThemedButton
+                    android:id="@+id/tag_notices"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_25sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:elevation="@dimen/_20sdp"
+                    app:toggle_backgroundColor="@color/white"
+                    app:toggle_selectedBackgroundColor="@color/yellow"
+                    app:toggle_selectedTextColor="@color/white"
+                    app:toggle_text="Notices"
+                    app:toggle_textColor="@color/grey" />
+
+
+                <nl.bryanderidder.themedtogglebuttongroup.ThemedButton
+                    android:id="@+id/tag_news"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_25sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:elevation="@dimen/_20sdp"
+                    app:toggle_backgroundColor="@color/white"
+                    app:toggle_selectedBackgroundColor="@color/yellow"
+                    app:toggle_selectedTextColor="@color/white"
+                    app:toggle_text="News"
+                    app:toggle_textColor="@color/grey" />
+
+
+                <nl.bryanderidder.themedtogglebuttongroup.ThemedButton
+                    android:id="@+id/tag_others"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_25sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:elevation="@dimen/_20sdp"
+                    app:toggle_backgroundColor="@color/white"
+                    app:toggle_selectedBackgroundColor="@color/yellow"
+                    app:toggle_selectedTextColor="@color/white"
+                    app:toggle_text="Others"
+                    app:toggle_textColor="@color/grey" />
+                <!-- ... -->
+
+            </nl.bryanderidder.themedtogglebuttongroup.ThemedToggleButtonGroup>
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/container_rv_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="@dimen/_2sdp"
+                android:layout_below="@id/toggle_btns_grp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true">
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    android:background="@color/white"
+                    tools:listitem="@layout/rv_item_3"
+                    android:clipToPadding="false"
+                    android:paddingBottom="@dimen/_10sdp"
+                    tools:itemCount="3"/>
+            </androidx.cardview.widget.CardView>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+
+</FrameLayout>
