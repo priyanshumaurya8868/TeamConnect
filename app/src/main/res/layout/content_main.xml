@@ -70,7 +70,6 @@
                       android:layout_centerVertical="true"
                       android:background="@drawable/blue_circular"
                       android:foreground="?android:attr/selectableItemBackground"
-                      android:elevation="@dimen/_5sdp"
                       android:layout_gravity="center"
                       android:padding="@dimen/_10sdp"
                       android:src="@drawable/ic_home"

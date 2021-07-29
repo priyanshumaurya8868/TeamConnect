@@ -7,8 +7,8 @@
 
     <fragment
         android:id="@+id/nav_home"
+        android:label=""
         android:name="com.acompworld.teamconnect.ui.fragments.HomeFragment"
-        android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
@@ -29,12 +29,19 @@
 
     <fragment
         android:id="@+id/nav_emp_profile"
+        android:label=""
         android:name="com.acompworld.teamconnect.ui.fragments.directory.EmployeeProfile"
         tools:layout="@layout/fragment_employees" />
 
 
     <fragment
         android:id="@+id/nav_tele_directory"
+        android:label=""
         android:name="com.acompworld.teamconnect.ui.fragments.directory.TelePhoneContact"
         tools:layout="@layout/fragment_telephone_contact" />
+    <fragment
+        android:id="@+id/nav_about_us"
+        android:name="com.acompworld.teamconnect.ui.fragments.AboutUs"
+        android:label="About Us"
+        tools:layout="@layout/fragment_about_us"/>
 </navigation>

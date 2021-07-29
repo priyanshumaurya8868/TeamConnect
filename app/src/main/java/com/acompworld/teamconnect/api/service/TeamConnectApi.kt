@@ -1,9 +1,6 @@
 package com.acompworld.teamconnect.api.service
 
-import com.acompworld.teamconnect.api.model.responses.ContactResponse
-import com.acompworld.teamconnect.api.model.responses.DirectoryResponse
-import com.acompworld.teamconnect.api.model.responses.EmployeeResponse
-import com.acompworld.teamconnect.api.model.responses.MyWallResponse
+import com.acompworld.teamconnect.api.model.responses.*
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -34,5 +31,15 @@ interface TeamConnectApi {
         @Query("projcode") projectCode : String,
         @Query("id") id : String
     ):Response<ContactResponse>
+
+    @GET("about")
+    suspend fun getAboutUs(
+        @Query("projcode") projcode:String
+    ):Response<AboutRespone>
+
+    suspend fun getDepartments(
+
+    )
+
 
 }

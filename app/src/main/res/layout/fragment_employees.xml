@@ -1,322 +1,337 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/mild_white">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+   <ScrollView
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:id="@+id/scrollView">
+       <LinearLayout
+           android:id="@+id/container_main"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="vertical">
+
+           <LinearLayout
+               android:id="@+id/container_profile"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:background="@color/blue"
+               android:gravity="center"
+               android:orientation="vertical"
+               android:paddingTop="@dimen/_40sdp">
+
+               <de.hdodenhof.circleimageview.CircleImageView
+                   android:id="@+id/iv_pfp"
+                   android:layout_width="@dimen/_70sdp"
+                   android:layout_height="@dimen/_70sdp"
+                   tools:src="@drawable/ic_test" />
+
+               <TextView
+                   android:id="@+id/tv_name"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:fontFamily="@font/source_sans_pro_semibold"
+                   android:padding="@dimen/_10sdp"
+                   android:textAlignment="center"
+                   android:textColor="@color/white"
+                   android:textSize="@dimen/_16ssp"
+                   tools:text="Priyanshu Kumar Maurya" />
+
+               <TextView
+                   android:id="@+id/tv_designation"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginTop="@dimen/_minus10sdp"
+                   android:fontFamily="@font/source_sans_pro_semibold"
+                   android:paddingHorizontal="@dimen/_10sdp"
+                   android:paddingBottom="@dimen/_10sdp"
+                   android:textColor="@color/white"
+                   android:textSize="@dimen/_12ssp"
+                   tools:text="Andorid Dev Intern" />
+           </LinearLayout>
+
+
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:orientation="vertical"
+               android:paddingHorizontal="@dimen/_10sdp"
+               android:paddingVertical="@dimen/_40sdp">
+
+               <RelativeLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content">
+                   <ImageView
+                       android:id="@+id/icon_phone1"
+                       android:layout_width="@dimen/_15sdp"
+                       android:layout_height="@dimen/_15sdp"
+                       android:src="@drawable/ic_phn"
+                       app:tint="@color/grey" />
+
+                   <TextView
+                       android:id="@+id/hint_empNo"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:text="Employee No"
+                       android:fontFamily="@font/source_sans_pro"
+                       android:layout_toEndOf="@+id/icon_phone1"
+                       android:paddingHorizontal="@dimen/_5sdp"
+                       android:textSize="@dimen/_10ssp"/>
+
+                   <TextView
+                       android:id="@+id/tv_employee_no"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       tools:text="0147"
+                       android:textColor="@color/mild_black"
+                       android:textSize="@dimen/_14ssp"
+                       android:fontFamily="@font/source_sans_pro_semibold"
+                       android:layout_toEndOf="@id/icon_phone1"
+                       android:layout_below="@id/icon_phone1"
+                       android:paddingHorizontal="@dimen/_5sdp"/>
+                   <View
+                       android:layout_width="match_parent"
+                       android:layout_height="@dimen/_1sdp"
+                       android:background="@color/grey"
+                       android:layout_alignParentBottom="true"
+                       android:layout_below="@id/tv_employee_no"
+                       android:layout_marginTop="@dimen/_5sdp"
+                       android:alpha="0.2"/>
+               </RelativeLayout>
+
+               <RelativeLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_marginTop="@dimen/_10sdp">
+                   <ImageView
+                       android:id="@+id/icon_phone2"
+                       android:layout_width="@dimen/_15sdp"
+                       android:layout_height="@dimen/_15sdp"
+                       android:src="@drawable/ic_phn"
+                       app:tint="@color/grey" />
+
+                   <TextView
+                       android:id="@+id/hint_mobile"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:text="Mobile"
+                       android:fontFamily="@font/source_sans_pro"
+                       android:layout_toEndOf="@+id/icon_phone2"
+                       android:paddingHorizontal="@dimen/_5sdp"
+                       android:textSize="@dimen/_10ssp"/>
+
+                   <TextView
+                       android:id="@+id/tv_mobile"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       tools:text="951540147"
+                       android:textColor="@color/mild_black"
+                       android:textSize="@dimen/_14ssp"
+                       android:fontFamily="@font/source_sans_pro_semibold"
+                       android:layout_toEndOf="@id/icon_phone2"
+                       android:layout_below="@id/icon_phone2"
+                       android:paddingHorizontal="@dimen/_5sdp"/>
+                   <View
+                       android:layout_width="match_parent"
+                       android:layout_height="@dimen/_1sdp"
+                       android:background="@color/grey"
+                       android:layout_alignParentBottom="true"
+                       android:layout_below="@id/tv_mobile"
+                       android:layout_marginVertical="@dimen/_5sdp"
+                       android:alpha="0.2"/>
+
+               </RelativeLayout>
+
+               <RelativeLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_marginTop="@dimen/_10sdp">
+                   <ImageView
+                       android:id="@+id/icon_phone4"
+                       android:layout_width="@dimen/_15sdp"
+                       android:layout_height="@dimen/_15sdp"
+                       android:src="@drawable/ic_phn"
+                       app:tint="@color/grey" />
+
+                   <TextView
+                       android:id="@+id/hint_alternate_mobileNo"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:text="Alternate Mobile No."
+                       android:fontFamily="@font/source_sans_pro"
+                       android:layout_toEndOf="@+id/icon_phone4"
+                       android:paddingHorizontal="@dimen/_5sdp"
+                       android:textSize="@dimen/_10ssp"/>
+
+                   <TextView
+                       android:id="@+id/tv_alternateMobNo"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       tools:text="0147"
+                       android:textColor="@color/mild_black"
+                       android:textSize="@dimen/_14ssp"
+                       android:fontFamily="@font/source_sans_pro_semibold"
+                       android:layout_toEndOf="@id/icon_phone4"
+                       android:layout_below="@id/icon_phone4"
+                       android:paddingHorizontal="@dimen/_5sdp"/>
+                   <View
+                       android:layout_width="match_parent"
+                       android:layout_height="@dimen/_1sdp"
+                       android:background="@color/grey"
+                       android:layout_alignParentBottom="true"
+                       android:layout_below="@id/tv_alternateMobNo"
+                       android:layout_marginVertical="@dimen/_5sdp"
+                       android:alpha="0.2"/>
+
+               </RelativeLayout>
+
+               <RelativeLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_marginTop="@dimen/_10sdp">
+                   <ImageView
+                       android:id="@+id/icon_phone3"
+                       android:layout_width="@dimen/_15sdp"
+                       android:layout_height="@dimen/_15sdp"
+                       android:src="@drawable/ic_phn"
+                       app:tint="@color/grey" />
+
+                   <TextView
+                       android:id="@+id/hint_office_phn"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:text="Intercom (O)"
+                       android:fontFamily="@font/source_sans_pro"
+                       android:layout_toEndOf="@+id/icon_phone3"
+                       android:paddingHorizontal="@dimen/_5sdp"
+                       android:textSize="@dimen/_10ssp"/>
+
+                   <TextView
+                       android:id="@+id/tv_intercom_o"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       tools:text="0147"
+                       android:textColor="@color/mild_black"
+                       android:textSize="@dimen/_14ssp"
+                       android:fontFamily="@font/source_sans_pro_semibold"
+                       android:layout_toEndOf="@id/icon_phone3"
+                       android:layout_below="@id/icon_phone3"
+                       android:paddingHorizontal="@dimen/_5sdp"/>
+                   <View
+                       android:layout_width="match_parent"
+                       android:layout_height="@dimen/_1sdp"
+                       android:background="@color/grey"
+                       android:layout_alignParentBottom="true"
+                       android:layout_below="@id/tv_intercom_o"
+                       android:layout_marginVertical="@dimen/_5sdp"
+                       android:alpha="0.2"/>
+
+               </RelativeLayout>
+
+
+
+               <RelativeLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_marginTop="@dimen/_10sdp">
+                   <ImageView
+                       android:id="@+id/icon_phone5"
+                       android:layout_width="@dimen/_15sdp"
+                       android:layout_height="@dimen/_15sdp"
+                       android:src="@drawable/ic_phn"
+                       app:tint="@color/grey" />
+
+                   <TextView
+                       android:id="@+id/hint_email"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:text="Email"
+                       android:fontFamily="@font/source_sans_pro"
+                       android:layout_toEndOf="@+id/icon_phone5"
+                       android:paddingHorizontal="@dimen/_5sdp"
+                       android:textSize="@dimen/_10ssp"/>
+
+                   <TextView
+                       android:id="@+id/tv_email"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       tools:text="priyanshumaurya.8868@gmail.com"
+                       android:textColor="@color/mild_black"
+                       android:textSize="@dimen/_14ssp"
+                       android:fontFamily="@font/source_sans_pro_semibold"
+                       android:layout_toEndOf="@id/icon_phone5"
+                       android:layout_below="@id/icon_phone5"
+                       android:paddingHorizontal="@dimen/_5sdp"/>
+                   <View
+                       android:layout_width="match_parent"
+                       android:layout_height="@dimen/_1sdp"
+                       android:background="@color/grey"
+                       android:layout_alignParentBottom="true"
+                       android:layout_below="@id/tv_email"
+                       android:layout_marginVertical="@dimen/_5sdp"
+                       android:alpha="0.2"/>
+
+
+               </RelativeLayout>
+
+               <RelativeLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_marginTop="@dimen/_10sdp">
+                   <ImageView
+                       android:id="@+id/icon_phone6"
+                       android:layout_width="@dimen/_15sdp"
+                       android:layout_height="@dimen/_15sdp"
+                       android:src="@drawable/ic_phn"
+                       app:tint="@color/grey" />
+
+                   <TextView
+                       android:id="@+id/hint_address"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:text="Address"
+                       android:fontFamily="@font/source_sans_pro"
+                       android:layout_toEndOf="@+id/icon_phone6"
+                       android:paddingHorizontal="@dimen/_5sdp"
+                       android:textSize="@dimen/_10ssp"/>
+
+                   <TextView
+                       android:id="@+id/tv_address"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       tools:text="Earth, Milkyway"
+                       android:textColor="@color/mild_black"
+                       android:textSize="@dimen/_14ssp"
+                       android:fontFamily="@font/source_sans_pro_semibold"
+                       android:layout_toEndOf="@id/icon_phone6"
+                       android:layout_below="@id/icon_phone6"
+                       android:paddingHorizontal="@dimen/_5sdp"/>
+                   <View
+                       android:layout_width="match_parent"
+                       android:layout_height="@dimen/_1sdp"
+                       android:background="@color/grey"
+                       android:layout_alignParentBottom="true"
+                       android:layout_below="@id/tv_address"
+                       android:layout_marginVertical="@dimen/_5sdp"
+                       android:alpha="0.2"/>
+
+               </RelativeLayout>
+
+           </LinearLayout>
+
+       </LinearLayout>
+   </ScrollView>
+
+    <ProgressBar
+        android:visibility="gone"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_gravity="center"
+        android:id="@+id/progress_circular"/>
 
-        <LinearLayout
-            android:id="@+id/container_profile"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/blue"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:paddingTop="@dimen/_40sdp">
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/iv_pfp"
-                android:layout_width="@dimen/_70sdp"
-                android:layout_height="@dimen/_70sdp"
-                tools:src="@drawable/ic_test" />
-
-            <TextView
-                android:id="@+id/tv_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/source_sans_pro_semibold"
-                android:padding="@dimen/_10sdp"
-                android:textAlignment="center"
-                android:textColor="@color/white"
-                android:textSize="@dimen/_16ssp"
-                tools:text="Priyanshu Kumar Maurya" />
-
-            <TextView
-                android:id="@+id/tv_designation"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_minus10sdp"
-                android:fontFamily="@font/source_sans_pro_semibold"
-                android:paddingHorizontal="@dimen/_10sdp"
-                android:paddingBottom="@dimen/_10sdp"
-                android:textColor="@color/white"
-                android:textSize="@dimen/_12ssp"
-                tools:text="Andorid Dev Intern" />
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingHorizontal="@dimen/_10sdp"
-            android:paddingVertical="@dimen/_40sdp">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <ImageView
-                    android:id="@+id/icon_phone1"
-                    android:layout_width="@dimen/_15sdp"
-                    android:layout_height="@dimen/_15sdp"
-                    android:src="@drawable/ic_phn"
-                    app:tint="@color/grey" />
-
-                <TextView
-                    android:id="@+id/hint_empNo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Employee No"
-                    android:fontFamily="@font/source_sans_pro"
-                    android:layout_toEndOf="@+id/icon_phone1"
-                   android:paddingHorizontal="@dimen/_5sdp"
-                    android:textSize="@dimen/_10ssp"/>
-
-                <TextView
-                    android:id="@+id/tv_employee_no"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    tools:text="0147"
-                    android:textColor="@color/mild_black"
-                    android:textSize="@dimen/_14ssp"
-                    android:fontFamily="@font/source_sans_pro_semibold"
-                    android:layout_toEndOf="@id/icon_phone1"
-                    android:layout_below="@id/icon_phone1"
-                    android:paddingHorizontal="@dimen/_5sdp"/>
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_1sdp"
-                    android:background="@color/grey"
-                    android:layout_alignParentBottom="true"
-                    android:layout_below="@id/tv_employee_no"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:alpha="0.2"/>
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_10sdp">
-                <ImageView
-                    android:id="@+id/icon_phone2"
-                    android:layout_width="@dimen/_15sdp"
-                    android:layout_height="@dimen/_15sdp"
-                    android:src="@drawable/ic_phn"
-                    app:tint="@color/grey" />
-
-                <TextView
-                    android:id="@+id/hint_mobile"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Mobile"
-                    android:fontFamily="@font/source_sans_pro"
-                    android:layout_toEndOf="@+id/icon_phone2"
-                    android:paddingHorizontal="@dimen/_5sdp"
-                    android:textSize="@dimen/_10ssp"/>
-
-                <TextView
-                    android:id="@+id/tv_mobile"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    tools:text="951540147"
-                    android:textColor="@color/mild_black"
-                    android:textSize="@dimen/_14ssp"
-                    android:fontFamily="@font/source_sans_pro_semibold"
-                    android:layout_toEndOf="@id/icon_phone2"
-                    android:layout_below="@id/icon_phone2"
-                    android:paddingHorizontal="@dimen/_5sdp"/>
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_1sdp"
-                    android:background="@color/grey"
-                    android:layout_alignParentBottom="true"
-                    android:layout_below="@id/tv_mobile"
-                    android:layout_marginVertical="@dimen/_5sdp"
-                    android:alpha="0.2"/>
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_10sdp">
-                <ImageView
-                    android:id="@+id/icon_phone3"
-                    android:layout_width="@dimen/_15sdp"
-                    android:layout_height="@dimen/_15sdp"
-                    android:src="@drawable/ic_phn"
-                    app:tint="@color/grey" />
-
-                <TextView
-                    android:id="@+id/hint_office_phn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Intercom (O)"
-                    android:fontFamily="@font/source_sans_pro"
-                    android:layout_toEndOf="@+id/icon_phone3"
-                    android:paddingHorizontal="@dimen/_5sdp"
-                    android:textSize="@dimen/_10ssp"/>
-
-                <TextView
-                    android:id="@+id/tv_intercom_o"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    tools:text="0147"
-                    android:textColor="@color/mild_black"
-                    android:textSize="@dimen/_14ssp"
-                    android:fontFamily="@font/source_sans_pro_semibold"
-                    android:layout_toEndOf="@id/icon_phone3"
-                    android:layout_below="@id/icon_phone3"
-                    android:paddingHorizontal="@dimen/_5sdp"/>
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_1sdp"
-                    android:background="@color/grey"
-                    android:layout_alignParentBottom="true"
-                    android:layout_below="@id/tv_intercom_o"
-                    android:layout_marginVertical="@dimen/_5sdp"
-                    android:alpha="0.2"/>
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_10sdp">
-                <ImageView
-                    android:id="@+id/icon_phone4"
-                    android:layout_width="@dimen/_15sdp"
-                    android:layout_height="@dimen/_15sdp"
-                    android:src="@drawable/ic_phn"
-                    app:tint="@color/grey" />
-
-                <TextView
-                    android:id="@+id/hint_residence_phn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Intercom (R)"
-                    android:fontFamily="@font/source_sans_pro"
-                    android:layout_toEndOf="@+id/icon_phone4"
-                    android:paddingHorizontal="@dimen/_5sdp"
-                    android:textSize="@dimen/_10ssp"/>
-
-                <TextView
-                    android:id="@+id/tv_intercom_r"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    tools:text="0147"
-                    android:textColor="@color/mild_black"
-                    android:textSize="@dimen/_14ssp"
-                    android:fontFamily="@font/source_sans_pro_semibold"
-                    android:layout_toEndOf="@id/icon_phone4"
-                    android:layout_below="@id/icon_phone4"
-                    android:paddingHorizontal="@dimen/_5sdp"/>
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_1sdp"
-                    android:background="@color/grey"
-                    android:layout_alignParentBottom="true"
-                    android:layout_below="@id/tv_intercom_r"
-                    android:layout_marginVertical="@dimen/_5sdp"
-                    android:alpha="0.2"/>
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_10sdp">
-                <ImageView
-                    android:id="@+id/icon_phone5"
-                    android:layout_width="@dimen/_15sdp"
-                    android:layout_height="@dimen/_15sdp"
-                    android:src="@drawable/ic_phn"
-                    app:tint="@color/grey" />
-
-                <TextView
-                    android:id="@+id/hint_email"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Email"
-                    android:fontFamily="@font/source_sans_pro"
-                    android:layout_toEndOf="@+id/icon_phone5"
-                    android:paddingHorizontal="@dimen/_5sdp"
-                    android:textSize="@dimen/_10ssp"/>
-
-                <TextView
-                    android:id="@+id/tv_email"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    tools:text="priyanshumaurya.8868@gmail.com"
-                    android:textColor="@color/mild_black"
-                    android:textSize="@dimen/_14ssp"
-                    android:fontFamily="@font/source_sans_pro_semibold"
-                    android:layout_toEndOf="@id/icon_phone5"
-                    android:layout_below="@id/icon_phone5"
-                    android:paddingHorizontal="@dimen/_5sdp"/>
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_1sdp"
-                    android:background="@color/grey"
-                    android:layout_alignParentBottom="true"
-                    android:layout_below="@id/tv_email"
-                    android:layout_marginVertical="@dimen/_5sdp"
-                    android:alpha="0.2"/>
-
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_10sdp">
-                <ImageView
-                    android:id="@+id/icon_phone6"
-                    android:layout_width="@dimen/_15sdp"
-                    android:layout_height="@dimen/_15sdp"
-                    android:src="@drawable/ic_phn"
-                    app:tint="@color/grey" />
-
-                <TextView
-                    android:id="@+id/hint_address"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Address"
-                    android:fontFamily="@font/source_sans_pro"
-                    android:layout_toEndOf="@+id/icon_phone6"
-                    android:paddingHorizontal="@dimen/_5sdp"
-                    android:textSize="@dimen/_10ssp"/>
-
-                <TextView
-                    android:id="@+id/tv_address"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    tools:text="Earth, Milkyway"
-                    android:textColor="@color/mild_black"
-                    android:textSize="@dimen/_14ssp"
-                    android:fontFamily="@font/source_sans_pro_semibold"
-                    android:layout_toEndOf="@id/icon_phone6"
-                    android:layout_below="@id/icon_phone6"
-                    android:paddingHorizontal="@dimen/_5sdp"/>
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_1sdp"
-                    android:background="@color/grey"
-                    android:layout_alignParentBottom="true"
-                    android:layout_below="@id/tv_address"
-                    android:layout_marginVertical="@dimen/_5sdp"
-                    android:alpha="0.2"/>
-
-            </RelativeLayout>
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-</ScrollView>
+</FrameLayout>

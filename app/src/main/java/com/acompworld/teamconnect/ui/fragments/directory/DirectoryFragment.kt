@@ -4,12 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.acompworld.teamconnect.R
 import com.acompworld.teamconnect.api.model.entities.Empdirectory
 import com.acompworld.teamconnect.api.model.entities.Teldirectory
+import com.acompworld.teamconnect.api.model.responses.DirectoryResponse
 import com.acompworld.teamconnect.databinding.DirectoryItemBinding
 import com.acompworld.teamconnect.databinding.FragmentDirectoryBinding
 import com.acompworld.teamconnect.ui.MainViewModel
@@ -17,8 +19,13 @@ import com.acompworld.teamconnect.utils.Constants.EMPLYOYEE_ID
 import com.acompworld.teamconnect.utils.Constants.PROJECT_Code
 import com.acompworld.teamconnect.utils.Constants.TELEPHONE_CONTACT_ID
 import com.acompworld.teamconnect.utils.GenericListAdapter
+import com.acompworld.teamconnect.utils.Resource
 import com.acompworld.teamconnect.utils.load
+import com.acompworld.teamconnect.utils.loadPfp
+import com.google.android.material.snackbar.Snackbar
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class DirectoryFragment : Fragment() {
 
     private lateinit var viewModel: MainViewModel
@@ -44,7 +51,35 @@ class DirectoryFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.directory.observe({ lifecycle }) { directory ->
+        viewModel.directory.observe({ lifecycle }) { handleResources(view, it) }
+    }
+
+
+    private fun handleResources(view: View, res: Resource<DirectoryResponse?>) {
+        when (res) {
+            is Resource.Loading -> {
+                binding?.progressCircular?.isVisible = true
+
+            }
+            is Resource.Error -> {
+                binding?.progressCircular?.isVisible = false
+                res.data?.let { setUpViews(it) }
+                Snackbar.make(view, res.msg ?: "Something went Wrong", Snackbar.LENGTH_LONG).apply {
+                    setAction("Retry") {
+                        viewModel.getDirectory()
+                    }
+                }.show()
+            }
+            is Resource.Success -> {
+                setUpViews(res.data!!)
+                binding?.progressCircular?.isVisible = false
+            }
+        }
+    }
+
+    private fun setUpViews(response: DirectoryResponse) {
+
+        response.let { directory ->
             projectCode = directory.projectCode
             binding?.apply {
 
@@ -74,13 +109,13 @@ class DirectoryFragment : Fragment() {
                 val itemBinding = DirectoryItemBinding.bind(holder.itemView)
                 itemBinding.apply {
                     tvName.text = item.empname
-                    tvDesignation.text = item.designation
-                    ivPfp.load(item.profilepic.toString())
+                    tvDesignation.text = (item.department+" - "+ item.designation)
+                    ivPfp.loadPfp(item.profilepic)
 
                     root.setOnClickListener {
-                        val bundle = android.os.Bundle()
+                        val bundle = Bundle()
                         bundle.apply {
-                            putString( EMPLYOYEE_ID, item.empno )
+                            putString(EMPLYOYEE_ID, item.empno)
                             putString(
                                 PROJECT_Code,
                                 projectCode
@@ -105,7 +140,7 @@ class DirectoryFragment : Fragment() {
                 itemBinding.apply {
                     tvName.text = item.location
                     tvDesignation.text = item.category
-                    ivPfp.load(item.icon.toString())
+                    ivPfp.loadPfp(item.icon)
 
                     root.setOnClickListener {
                         val bundle = Bundle()

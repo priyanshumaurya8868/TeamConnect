@@ -8,19 +8,22 @@
     tools:context=".ui.fragments.HomeFragment">
 
     <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <RelativeLayout
+            android:id="@+id/container_main"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/_10ssp">
+            android:padding="@dimen/_10sdp">
 
             <ImageView
                 android:id="@+id/iv_logo"
                 android:layout_width="@dimen/_50sdp"
                 android:layout_height="@dimen/_30sdp"
-                android:src="@drawable/ic_national_thermal_power_logo" />
+                android:src="@drawable/ic_national_thermal_power_logo"
+                android:layout_marginBottom="@dimen/_10sdp"/>
 
             <TextView
                 android:id="@+id/tv_name"
@@ -50,57 +53,292 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/iv_logo"
+                android:clipToPadding="false"
+                android:clipChildren="false"
+                android:paddingHorizontal="@dimen/_5sdp"
                 tools:itemCount="1"
                 android:layout_marginTop="@dimen/_minus5sdp"
                 android:layout_marginStart="@dimen/_minus5sdp"
                 tools:listitem="@layout/home_rv_item1" />
 
-            <!--            TODO: Play with it-->
-            <RelativeLayout
-                android:id="@+id/container_gen_data1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/rv_1"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentEnd="true"
-                android:visibility="gone">
+           <RelativeLayout
+               android:id="@+id/container_generationData"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_below="@id/rv_1"
+               android:layout_marginTop="@dimen/_minus10sdp">
+               <TextView
+                   android:id="@+id/action_more"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_alignParentEnd="true"
+                   android:fontFamily="@font/source_sans_pro_semibold"
+                   android:text="More"
+                   android:layout_alignBaseline="@id/label_gen_data"
+                   android:textColor="@color/grey"
+                   android:textSize="@dimen/_10ssp" />
 
-                <TextView
-                    android:id="@+id/label_gen_data"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/source_sans_pro_semibold"
-                    android:text="Generation Data"
-                    android:textColor="@color/mild_black" />
+               <TextView
+                   android:id="@+id/label_gen_data"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_alignParentStart="true"
+                   android:paddingTop="@dimen/_10sdp"
+                   android:paddingBottom="@dimen/_5sdp"
+                   android:fontFamily="@font/source_sans_pro_semibold"
+                   android:text="Generation Data"
+                   android:textColor="@color/mild_black" />
 
-                <TextView
-                    android:id="@+id/action_more"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignBaseline="@id/label_gen_data"
-                    android:layout_alignParentEnd="true"
-                    android:fontFamily="@font/source_sans_pro_semibold"
-                    android:text="More"
-                    android:textColor="@color/grey"
-                    android:textSize="@dimen/_10ssp" />
+               <HorizontalScrollView
+                   android:id="@+id/horizontal_slide_gen_data"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_below="@id/action_more"
+                   android:scrollbars="none"
+                   android:clipToPadding="false"
+                   android:clipChildren="false"
+                   android:paddingHorizontal="@dimen/_5sdp"
+                   android:scrollbarFadeDuration="100"
+                   android:layout_alignParentStart="true"
+                   android:layout_alignParentEnd="true">
+
+                   <LinearLayout
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:orientation="horizontal">
+
+                       <androidx.cardview.widget.CardView
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:minWidth="@dimen/_70sdp"
+
+                           app:cardCornerRadius="@dimen/_5sdp"
+                           android:background="@color/white"
+                           app:cardElevation="@dimen/_5sdp"
+                           android:layout_marginVertical="@dimen/_10sdp"
+                           android:layout_marginEnd="@dimen/_10sdp">
+
+                           <LinearLayout
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
+                               android:orientation="vertical"
+                               android:paddingTop="@dimen/_10sdp"
+                               android:padding="@dimen/_5sdp">
+
+                               <LinearLayout
+                                   android:layout_width="wrap_content"
+                                   android:layout_height="wrap_content"
+                                   android:orientation="horizontal">
+                                   <TextView
+                                       android:id="@+id/tv_running_unit"
+                                       android:layout_width="wrap_content"
+                                       android:layout_height="wrap_content"
+                                       tools:text="7"
+                                       android:textColor="@color/blue"
+                                       android:textSize="@dimen/_25ssp"
+                                       android:fontFamily="@font/source_sans_pro_semibold"
+                                       android:padding="@dimen/_5sdp"/>
+                                   <TextView
+                                       android:id="@+id/tv_total_unit"
+                                       android:layout_width="wrap_content"
+                                       android:layout_height="wrap_content"
+                                       tools:text="/9"
+                                       android:layout_marginStart="@dimen/_minus5sdp"
+                                       android:textColor="@color/grey"
+                                       android:textSize="@dimen/_16ssp"
+                                       android:fontFamily="@font/source_sans_pro_semibold"
+                                       />
+                               </LinearLayout>
+
+                               <TextView
+                                   android:layout_width="wrap_content"
+                                   android:layout_height="wrap_content"
+                                   android:text="UNITS"
+                                   android:layout_marginStart="@dimen/_5sdp"
+                                   android:textColor="@color/grey"
+                                   android:textSize="@dimen/_12ssp"
+                                   android:fontFamily="@font/source_sans_pro_semibold"
+                                   />
+
+                           </LinearLayout>
+                       </androidx.cardview.widget.CardView>
+
+                       <androidx.cardview.widget.CardView
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:minWidth="@dimen/_70sdp"
+
+                           app:cardCornerRadius="@dimen/_5sdp"
+                           android:background="@color/white"
+                           app:cardElevation="@dimen/_5sdp"
+                           android:layout_marginVertical="@dimen/_10sdp"
+                           android:layout_marginEnd="@dimen/_10sdp">
+
+                           <LinearLayout
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
+                               android:orientation="vertical"
+                               android:paddingTop="@dimen/_10sdp"
+                               android:padding="@dimen/_5sdp">
+
+                               <LinearLayout
+                                   android:layout_width="wrap_content"
+                                   android:layout_height="wrap_content"
+                                   android:orientation="horizontal">
+                                   <TextView
+                                       android:id="@+id/tv_genrationData"
+                                       android:layout_width="wrap_content"
+                                       android:layout_height="wrap_content"
+                                       tools:text="7322"
+                                       android:textColor="@color/blue"
+                                       android:textSize="@dimen/_25ssp"
+                                       android:fontFamily="@font/source_sans_pro_semibold"
+                                       android:padding="@dimen/_5sdp"/>
+                                   <TextView
+                                       android:id="@+id/tv_genration_data_unit"
+                                       android:layout_width="wrap_content"
+                                       android:layout_height="wrap_content"
+                                       android:text="mw"
+                                       android:layout_marginStart="@dimen/_minus5sdp"
+                                       android:textColor="@color/grey"
+                                       android:textSize="@dimen/_16ssp"
+                                       android:fontFamily="@font/source_sans_pro_semibold"
+                                       />
+                               </LinearLayout>
+
+                               <TextView
+                                   android:layout_width="wrap_content"
+                                   android:layout_height="wrap_content"
+                                   android:text="Generation"
+                                   android:layout_marginStart="@dimen/_5sdp"
+                                   android:textColor="@color/grey"
+                                   android:textSize="@dimen/_12ssp"
+                                   android:fontFamily="@font/source_sans_pro_semibold"
+                                   />
+
+                           </LinearLayout>
+                       </androidx.cardview.widget.CardView>
 
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rv_2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/label_gen_data"
-                    android:layout_marginTop="@dimen/_minus10sdp"
-                    tools:itemCount="1"
-                    tools:listitem="@layout/rv_item_2" />
+                       <androidx.cardview.widget.CardView
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:minWidth="@dimen/_70sdp"
 
-            </RelativeLayout>
+                           app:cardCornerRadius="@dimen/_5sdp"
+                           android:background="@color/white"
+                           app:cardElevation="@dimen/_5sdp"
+                           android:layout_marginVertical="@dimen/_10sdp">
+
+                           <LinearLayout
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
+                               android:orientation="vertical"
+                               android:paddingTop="@dimen/_5sdp"
+                               android:padding="@dimen/_5sdp">
+
+                               <LinearLayout
+                                   android:layout_width="wrap_content"
+                                   android:layout_height="wrap_content"
+                                   android:orientation="horizontal">
+                                   <TextView
+                                       android:id="@+id/tv_plf"
+                                       android:layout_width="wrap_content"
+                                       android:layout_height="wrap_content"
+                                       tools:text="73.3"
+                                       android:textColor="@color/blue"
+                                       android:textSize="@dimen/_25ssp"
+                                       android:fontFamily="@font/source_sans_pro_semibold"
+                                       android:padding="@dimen/_5sdp"/>
+                                   <TextView
+                                       android:id="@+id/tv_plf_unit"
+                                       android:layout_width="wrap_content"
+                                       android:layout_height="wrap_content"
+                                       android:text="%"
+                                       android:layout_marginStart="@dimen/_minus5sdp"
+                                       android:textColor="@color/grey"
+                                       android:textSize="@dimen/_16ssp"
+                                       android:fontFamily="@font/source_sans_pro_semibold"
+                                       />
+                               </LinearLayout>
+
+                               <TextView
+                                   android:layout_width="wrap_content"
+                                   android:layout_height="wrap_content"
+                                   android:text="PLF"
+                                   android:textColor="@color/grey"
+                                   android:textSize="@dimen/_12ssp"
+                                   android:layout_marginStart="@dimen/_5sdp"
+                                   android:fontFamily="@font/source_sans_pro_semibold"
+                                   />
+
+                           </LinearLayout>
+                       </androidx.cardview.widget.CardView>
+
+                       <androidx.cardview.widget.CardView
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:minWidth="@dimen/_70sdp"
+
+                           app:cardCornerRadius="@dimen/_5sdp"
+                           android:background="@color/white"
+                           app:cardElevation="@dimen/_5sdp"
+                           android:layout_marginVertical="@dimen/_10sdp"
+                           android:layout_marginHorizontal="@dimen/_10sdp">
+
+                           <LinearLayout
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
+                               android:orientation="vertical"
+                               android:paddingTop="@dimen/_10sdp"
+                               android:padding="@dimen/_5sdp">
+
+                               <LinearLayout
+                                   android:layout_width="wrap_content"
+                                   android:layout_height="wrap_content"
+                                   android:orientation="horizontal">
+                                   <TextView
+                                       android:id="@+id/tv_freq"
+                                       android:layout_width="wrap_content"
+                                       android:layout_height="wrap_content"
+                                       tools:text="70"
+                                       android:textColor="@color/blue"
+                                       android:textSize="@dimen/_25ssp"
+                                       android:fontFamily="@font/source_sans_pro_semibold"
+                                       android:padding="@dimen/_5sdp"/>
+                                   <TextView
+                                       android:id="@+id/tv_freq_unit"
+                                       android:layout_width="wrap_content"
+                                       android:layout_height="wrap_content"
+                                       android:layout_marginStart="@dimen/_minus5sdp"
+                                       android:textColor="@color/grey"
+                                       android:textSize="@dimen/_16ssp"
+                                       android:fontFamily="@font/source_sans_pro_semibold"
+                                       />
+                               </LinearLayout>
+
+                               <TextView
+                                   android:layout_width="wrap_content"
+                                   android:layout_height="wrap_content"
+                                   android:text="Frequency"
+                                   android:layout_marginStart="@dimen/_5sdp"
+                                   android:textColor="@color/grey"
+                                   android:textSize="@dimen/_12ssp"
+                                   android:fontFamily="@font/source_sans_pro_semibold"
+                                   />
+
+                           </LinearLayout>
+                       </androidx.cardview.widget.CardView>
+                   </LinearLayout>
+
+               </HorizontalScrollView>
+           </RelativeLayout>
 
             <TextView
                 android:id="@+id/label_gen_data2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/container_gen_data1"
+                android:layout_below="@id/container_generationData"
                 android:layout_alignParentStart="true"
                 android:fontFamily="@font/source_sans_pro_semibold"
                 android:text="Generation Data"
@@ -207,8 +445,12 @@
             </androidx.cardview.widget.CardView>
 
         </RelativeLayout>
-
     </ScrollView>
-
+    <ProgressBar
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:id="@+id/progress_circular"/>
 
 </FrameLayout>

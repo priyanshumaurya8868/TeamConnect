@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.view.WindowManager
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
@@ -17,30 +18,40 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.acompworld.teamconnect.R
 import com.acompworld.teamconnect.databinding.ActivityMainBinding
+import com.acompworld.teamconnect.databinding.ContentMainBinding
 import com.acompworld.teamconnect.utils.Constants
 import com.google.android.material.navigation.NavigationView
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     var menuSearchItem: MenuItem? = null
-    private val viewModel :MainViewModel by viewModels()
+    private val viewModel: MainViewModel by viewModels()
     private var shouldVisble: Boolean = false
-    var notificationBadge: View?=null
+    var notificationBadge: View? = null
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
+    private lateinit var contentMainBinding: ContentMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setSupportActionBar(binding.appBarMain.toolbar)
 
+
+        //accelerating hardware
+        window.setFlags(
+            WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED,
+            WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED
+        )
+
+        setSupportActionBar(binding.appBarMain.toolbar)
         binding.appBarMain.toolbar.setNavigationIcon(R.drawable.ic_menu)
 
         val drawerLayout: DrawerLayout = binding.drawerLayout
@@ -56,6 +67,8 @@ class MainActivity : AppCompatActivity() {
 
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -64,8 +77,8 @@ class MainActivity : AppCompatActivity() {
 
         val item = menu.findItem(R.id.action_notification)
         val actionView = item.actionView
-        notificationBadge =  actionView.findViewById<View>(R.id.view_badge)
-         notificationBadge?.isVisible = shouldVisble
+        notificationBadge = actionView.findViewById(R.id.view_badge)
+        notificationBadge?.isVisible = shouldVisble
         actionView.setOnClickListener {
             onOptionsItemSelected(item)
             blinkNotification()
@@ -85,7 +98,7 @@ class MainActivity : AppCompatActivity() {
 
         searchView?.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-                viewModel.getDirectory(viewModel.myWall.value?.projectcode.toString() , query.toString() )
+                viewModel.getDirectory(viewModel.projectCode.toString(), query.toString())
                 return true
             }
 
@@ -96,7 +109,10 @@ class MainActivity : AppCompatActivity() {
                         job?.cancel()
                         job = MainScope().launch {
                             delay(Constants.SEARCH_TIME_DELAY)
-                            viewModel.getDirectory(viewModel.myWall.value?.projectcode.toString() , newText.toString() )
+                            viewModel.getDirectory(
+                                viewModel.projectCode.toString(),
+                                newText.toString()
+                            )
                         }
                     }
                 }
@@ -106,15 +122,15 @@ class MainActivity : AppCompatActivity() {
         return super.onCreateOptionsMenu(menu)
     }
 
-   fun blinkNotification(){
-       Log.d("omega", "fun called")
-       notificationBadge?.let {
-           shouldVisble = !shouldVisble
-           Log.d("omega", "success")
-       }
-       if(notificationBadge == null)  Log.d("omega", "null badge")
-       invalidateOptionsMenu()
-   }
+    fun blinkNotification() {
+        Log.d("omega", "fun called")
+        notificationBadge?.let {
+            shouldVisble = !shouldVisble
+            Log.d("omega", "success")
+        }
+        if (notificationBadge == null) Log.d("omega", "null badge")
+        invalidateOptionsMenu()
+    }
 
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_content_main)

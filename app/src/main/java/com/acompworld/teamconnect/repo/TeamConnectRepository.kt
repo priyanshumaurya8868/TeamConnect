@@ -1,10 +1,8 @@
 package com.acompworld.teamconnect.repo
 
-import com.acompworld.teamconnect.api.service.MyClient
+import com.acompworld.teamconnect.api.service.TeamConnectApi
 
-object Repo {
-
-    val api = MyClient.api
+class TeamConnectRepository(val api : TeamConnectApi){
 
     suspend fun getMyWall(projectCode: String) = api.getMyWall(projectCode)
 
@@ -16,4 +14,6 @@ object Repo {
 
     suspend fun getContactByID(projectCode: String, empID: String)=
         api.getContactById(projectCode,empID)
+
+   suspend fun  getAboutUs(projectCode: String) = api.getAboutUs(projectCode)
 }

@@ -35,4 +35,24 @@ class ExampleUnitTest {
             assertNotNull(response.body())
         }
     }
+
+    //
+    @Test
+    fun getEmployeeByID(){
+        runBlocking {
+            val api = MyClient.api
+            val response = api.getEmployeeById("wrihq","087277",)
+            assertNotNull(response.body())
+        }
+    }
+
+    @Test
+    fun getContactByID(){
+        runBlocking {
+            val api = MyClient.api
+            val response = api.getContactById("wrihq","2",)
+            assertNotNull(response.body())
+        }
+    }
+
 }

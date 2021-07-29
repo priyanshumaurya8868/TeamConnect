@@ -11,7 +11,7 @@
     android:backgroundTint="@color/mild_white"
     android:clipToPadding="false"
     android:clipChildren="false"
-    android:layout_marginVertical="@dimen/_20sdp"
+    android:layout_marginVertical="@dimen/_10sdp"
     android:layout_marginEnd="@dimen/_5sdp"
     android:layout_marginStart="@dimen/_5sdp"
     app:cardElevation="@dimen/_5sdp">

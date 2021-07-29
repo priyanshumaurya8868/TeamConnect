@@ -3,12 +3,14 @@ package com.acompworld.teamconnect
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.acompworld.teamconnect.api.service.MyClient
+import com.acompworld.teamconnect.repo.TeamConnectRepository
 import kotlinx.coroutines.runBlocking
 
 import org.junit.Test
 import org.junit.runner.RunWith
 
 import org.junit.Assert.*
+import javax.inject.Inject
 
 /**
  * Instrumented test, which will execute on an Android device.
@@ -17,6 +19,7 @@ import org.junit.Assert.*
  */
 @RunWith(AndroidJUnit4::class)
 class ExampleInstrumentedTest {
+
     @Test
     fun useAppContext() {
         // Context of the app under test.
@@ -24,32 +27,13 @@ class ExampleInstrumentedTest {
         assertEquals("com.acompworld.teamconnect", appContext.packageName)
     }
 
-    @Test
-    fun myWall(){
-        runBlocking{
-            val api = MyClient.api
-            val response = api.getMyWall("wrihq")
-            assertNotNull(response.body())
-        }
-    }
-
-    @Test
-    fun getEmployeeByID(){
-        runBlocking {
-            val api = MyClient.api
-            val response = api.getEmployeeById("wrihq","087277",)
-            assertNotNull(response.body())
-        }
-    }
-
-    @Test
-    fun getContactByID(){
-        runBlocking {
-            val api = MyClient.api
-            val response = api.getContactById("wrihq","2",)
-            assertNotNull(response.body())
-        }
-    }
-
+//    @Test
+//    fun mywall(){
+//        val api = MyClient.api
+//        runBlocking {
+//            val res = api.getAboutUs("wrihq")
+//            assertNotNull(res.body())
+//        }
+//    }
 
 }

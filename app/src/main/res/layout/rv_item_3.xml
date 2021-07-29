@@ -47,7 +47,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/_1sdp"
             android:background="@color/grey"
-            android:alpha="0.3"
+            android:alpha="0.2"
             android:layout_below="@id/tv_title"/>
 
 
